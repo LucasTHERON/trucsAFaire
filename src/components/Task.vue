@@ -20,8 +20,8 @@
       </div>
       <!-- Boutons -->
       <div class="clearBtns">
-        <button @click="clearCompleted">Clear completed</button>
-        <button @click="clearAll">Clear all</button>
+        <button @click="clearCompleted">Effacer les trucs faits</button>
+        <button @click="clearAll">Effacer tous les trucs</button>
       </div>
       <!-- Trucs en cours -->
       <div class="pendingTasks">
@@ -50,7 +50,7 @@ export default {
       this.tasks = newTasks;
     },
     deleteTask(data){
-      let id =data.task.id;
+      let id = data.task.id;
       let newTasks = this.tasks.filter((task) => task.id !== id);
       this.tasks = newTasks;
     },
@@ -62,7 +62,8 @@ export default {
       if(this.newTask){
         this.tasks.push({
           title: this.newTask,
-          completed: false
+          completed: false,
+          id: this.tasks.slice(-1)[0].id + 1
         })
         this.newTask = '';
       }
